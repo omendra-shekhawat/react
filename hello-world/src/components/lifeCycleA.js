@@ -1,34 +1,72 @@
 import React, { Component } from 'react'
-import LifeCycleB from './lifeCycleB'
- class lifeCycleA extends Component {
-     constructor(props) {
-         super(props)
-     
-         this.state = {
-              name: 'ommii'
+import lifeCycleB from './lifeCycleB'
 
-         }
-         console.log('lifecycleA constructor')
-     }
-     static getDerivedStateFromProps(props,state){
-        console.log('lifecycleA getderivedstatefromprops') 
-        return null
-     }
-     componentDidMount(){
-         console.log('lifecycleA componentdidmountA')
-     }
-     
+class LifecycleA extends Component {
+    constructor(props){
+super(props)
+
+this.state = {
+    time: new Date().toLocaleString()
+
+    
+
+}
+// console.log('LifecyleA constructor')
+    }
+static getDerivedStateFromProps(props,state){
+    console.log('Lifecycle getDerivedStateFromProps')
+return null
+}
+
+componentDidMount(){
+    // console.log('LifecycleA componentDidMount')
+    this.intervalID = setInterval(
+        () => this.tick(),
+        1000
+      );
+}
+componentWillUnmount() {
+    clearInterval(this.intervalID);
+  }
+  tick() {
+    this.setState({
+      time: new Date().toLocaleString()
+    });
+  }
+
+shouldComponentUpdate(){
+    // console.log('LifecycleA render')
+    return true
+}
+//  getSnapshotBeforeUpdate(){
+//      console.log('LifecycleA getSnapshotBeforeUpdate')
+//  return null
+//     }
+
+// componentDidUpdate(){
+//     console.log('componentDidUpdateA')
+// }
+
+changeState = () => {
+    this.setState({
+        name: 'Rapidops'
+    })
+
+}
+
     render() {
-        console.log('lifecycleA render')
+        console.log('LifecycleA render')
         return (
             <div>
-            <div>
-                lifecycleA
-            </div>
-            <LifeCycleB></LifeCycleB>
+            <div> LifecycleA</div>
+            <button onClick={this.changeState} >Change state</button>
+            <lifeCycleB />
+            <p className="App-clock">
+            Time:  {this.state.time}
+          </p>
             </div>
         )
     }
 }
 
-export default lifeCycleA
+export default LifecycleA
