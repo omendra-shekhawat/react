@@ -47,19 +47,19 @@ shouldComponentUpdate(){
 //     console.log('componentDidUpdateA')
 // }
 
-changeState = () => {
-    this.setState({
-        name: 'Rapidops'
-    })
+// changeState = () => {
+//     this.setState({
+//         name: 'Rapidops'
+//     })
 
-}
+// }
 
     render() {
         console.log('LifecycleA render')
         return (
             <div>
             <div> LifecycleA</div>
-            <button onClick={this.changeState} >Change state</button>
+            {/* <button onClick={this.changeState} >Change state</button> */}
             <lifeCycleB />
             <p className="App-clock">
             Time:  {this.state.time}

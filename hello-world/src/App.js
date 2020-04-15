@@ -1,5 +1,5 @@
-// import React from 'react';
-import logo from './logo.svg';
+import React from 'react';
+// import logo from './logo.svg';
 import './App.css';
 // import  Greet from './components/Greet'
 // import Welcome from './components/welcome'
@@ -30,15 +30,15 @@ import './App.css';
 //   );
 // }
 
-import React, { Component } from 'react'
-import LifeCycle from './components/lifeCycleA';
+// import React, { Component } from 'react'
+import Table from './components/crud';
 
-class App extends Component {
+class App extends React.Component {
   render(){
     return(
       <div className="App">
 
-      <LifeCycle></LifeCycle>
+      <Table></Table>
       </div>
     )
   }
